@@ -1,4 +1,5 @@
 <script lang="ts">
+import YourListVue from './YourList.vue';
 import SelectIngredients from './SelectIngredients.vue';
 
 export default {
@@ -7,31 +8,13 @@ export default {
       ingredients: ['Alho', 'Manteiga', 'Leite', 'Sal']
     };
   },
-  components: { SelectIngredients }
+  components: { SelectIngredients, YourListVue }
 };
 </script>
 
 <template>
   <main class="main-content">
-    <section>
-      <span class="subtitle-lg your-text-list"> Sua lista: </span>
-
-      <ul v-if="ingredients.length" class="ingredients-your-list">
-        <li
-          v-for="ingredient in ingredients"
-          :key="ingredient"
-          class="ingredient"
-        >
-          {{ ingredient }}
-        </li>
-      </ul>
-
-      <p v-else class="paragraph empty-list">
-        <img src="../assets/icons/empty-list.svg" alt="Ícone de pesquisa" />
-        Sua lista está vazia, selecione ingredientes para iniciar.
-      </p>
-    </section>
-
+    <YourListVue :ingredients="ingredients" />
     <SelectIngredients />
   </main>
 </template>
@@ -46,43 +29,6 @@ export default {
   flex-direction: column;
   align-items: center;
   gap: 5rem;
-}
-
-.your-text-list {
-  color: var(--coral, #f0633c);
-  display: block;
-  text-align: center;
-  margin-bottom: 1.5rem;
-}
-
-.ingredients-your-list {
-  display: flex;
-  justify-content: center;
-  gap: 1rem 1.5rem;
-  flex-wrap: wrap;
-}
-
-.ingredient {
-  display: inline-block;
-  border-radius: 0.5rem;
-  min-width: 4.25rem;
-  padding: 0.5rem;
-  text-align: center;
-  transition: 0.2s;
-  color: var(--creme, #fffaf3);
-  background: var(--coral, #f0633c);
-  font-weight: 700;
-}
-
-.empty-list {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.25rem;
-
-  color: var(--coral, #f0633c);
-  text-align: center;
 }
 
 @media only screen and (max-width: 1300px) {
