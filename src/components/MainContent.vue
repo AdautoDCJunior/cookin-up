@@ -5,8 +5,16 @@ import SelectIngredients from './SelectIngredients.vue';
 export default {
   data() {
     return {
-      ingredients: ['Alho', 'Manteiga', 'Leite', 'Sal']
+      ingredients: [] as string[]
     };
+  },
+  methods: {
+    addIngredient(ingredient: string) {
+      this.ingredients.push(ingredient);
+    },
+    removeIngredient(ingredient: string) {
+      this.ingredients = this.ingredients.filter((item) => item !== ingredient);
+    }
   },
   components: { SelectIngredients, YourListVue }
 };
@@ -15,7 +23,10 @@ export default {
 <template>
   <main class="main-content">
     <YourListVue :ingredients="ingredients" />
-    <SelectIngredients />
+    <SelectIngredients
+      @addIngredient="addIngredient"
+      @removeIngredient="removeIngredient"
+    />
   </main>
 </template>
 
