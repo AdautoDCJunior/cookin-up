@@ -13,7 +13,7 @@ export default {
   async created() {
     this.categories = await getCategories();
   },
-  emits: ['addIngredient', 'removeIngredient'],
+  emits: ['addIngredient', 'removeIngredient', 'ChangePage'],
   components: { CardCategory, CButton }
 };
 </script>
@@ -40,7 +40,7 @@ export default {
       *Atenção: consideramos que você tem em casa sal, pimenta e água.
     </p>
 
-    <CButton text="Buscar receitas!" />
+    <CButton text="Buscar receitas!" @click="$emit('ChangePage')" />
   </section>
 </template>
 
