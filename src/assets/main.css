@@ -75,6 +75,14 @@ body {
   line-height: 150%;
 }
 
+.paragraph-bold {
+  font-family: Nunito Sans;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 150%;
+}
+
 .paragraph {
   font-family: Nunito Sans;
   font-size: 18px;
